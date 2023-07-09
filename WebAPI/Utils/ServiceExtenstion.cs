@@ -4,6 +4,7 @@ using Identity.Repository;
 using Identity.Repository.Business;
 using Identity.Repository.Contracts;
 using Microsoft.AspNetCore.Identity;
+using Payroll.Core.Context;
 
 namespace WebAPI.Utils
 {
@@ -17,6 +18,9 @@ namespace WebAPI.Utils
                 .AddDefaultTokenProviders();
             services.AddScoped<IAuthenticateBL, AuthenticateBL>();
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
+
+            services.AddScoped<Payroll.Core.Repository.IRepositoryWrapper, Payroll.Core.Repository.RepositoryWrapper>();
+            services.AddDbContext<PayrollContext>();
             //services.AddSingleton<ILoggerManager, LoggerManager>();
         }
     }
