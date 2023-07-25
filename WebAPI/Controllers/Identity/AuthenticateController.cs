@@ -46,8 +46,10 @@ namespace WebAPI.Controllers.Identity
                 SecurityStamp = Guid.NewGuid().ToString(),
                 UserName = model.Username,
                 FirstName = model.FirstName,
-                LastName = model.LastName
+                LastName = model.LastName,
+                MiddleName = model.MiddleName
             };
+            
             var result = await _userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)
                 return BadRequest(new ApiResponse(500, JsonConvert.SerializeObject(result.Errors)));
@@ -82,6 +84,7 @@ namespace WebAPI.Controllers.Identity
             }
             return Unauthorized(new ApiResponse(401));
         }
+        
         [HttpPost]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [Route("Assign-role")]

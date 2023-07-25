@@ -14,6 +14,10 @@ namespace WebAPI.Mapper
             CreateMap<Employee, EmployeeDTO>()
                 .ReverseMap()
                 .ForAllMembers(o => o.Condition((src, dest, value) => value != null));
+
+            CreateMap<EmployeeJobDescription, EmployeeJobDescriptionDTO>()
+                .ReverseMap()
+                .ForAllMembers(o => o.Condition((src, dest, value) => value != null));
         }
 
         public class StringToByte : ITypeConverter<string, byte[]>

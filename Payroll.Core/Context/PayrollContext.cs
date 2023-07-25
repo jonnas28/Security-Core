@@ -26,8 +26,16 @@ namespace Payroll.Core.Context
             modelBuilder.Entity<Employee>(entity =>
             {
                 entity.ToTable("Employee"); // Set the table name
-                entity.HasKey(e => e.Id); // Set the primary key
-                                          // Configure other properties and constraints
+                //entity.HasKey(e => e.Id); // Set the primary key
+                //entity.HasMany<EmployeeJobDescription>(x => x.EmployeeJobDescription);               // Configure other properties and constraints
+            });
+
+            modelBuilder.Entity<EmployeeJobDescription>(entity =>
+            {
+                entity.ToTable("EmployeeJobDescription");
+                //entity.HasKey(e => e.Id);
+                //entity.i
+
             });
         }
     }

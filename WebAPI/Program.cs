@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using NLog;
 using Payroll.Core.Context;
 using System.Reflection;
 using System.Text;
@@ -64,7 +63,7 @@ builder.Services.AddSwaggerGen(c =>
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
     c.EnableAnnotations();
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Security API", Version = "v1" });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         In = ParameterLocation.Header,

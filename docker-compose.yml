@@ -9,9 +9,9 @@ services:
       - MYSQL_DATABASE=Security
       - MYSQL_DATABASE=Payroll
       - MYSQL_ROOT_PASSWORD=P@ssw0rd
-      - MYSQL_ROOT_HOST=localhost
     ports:
       - '3306:3306'
+      
     volumes:
       - db:/var/lib/mysql
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
