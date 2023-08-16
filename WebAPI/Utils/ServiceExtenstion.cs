@@ -22,6 +22,15 @@ namespace WebAPI.Utils
             services.AddScoped<Payroll.Core.Repository.IRepositoryWrapper, Payroll.Core.Repository.RepositoryWrapper>();
             services.AddDbContext<PayrollContext>();
             //services.AddSingleton<ILoggerManager, LoggerManager>();
+
+            //CONFIGURE CORS
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
         }
     }
 }
