@@ -58,7 +58,7 @@ namespace WebAPI.Controllers.Identity
 
         [HttpPost]
         [Route("login")]
-        [SwaggerResponse(StatusCodes.Status200OK, Type = typeof(ApiOkResponse<TokenDTO>))]
+        [SwaggerResponse(StatusCodes.Status200OK, Type = typeof(TokenDTO))]
         [SwaggerResponse(StatusCodes.Status500InternalServerError, Type = typeof(ApiResponse))]
         [SwaggerResponse(StatusCodes.Status401Unauthorized, Type = typeof(ApiResponse))]
         public async Task<IActionResult> Login([FromBody] LoginDTO model)
@@ -80,7 +80,7 @@ namespace WebAPI.Controllers.Identity
                     RefreshTokenExpiration = user.RefreshTokenExpiryTime,
                 };
 
-                return Ok(new ApiOkResponse(ret));
+                return Ok(ret);
             }
             return Unauthorized(new ApiResponse(401));
         }
